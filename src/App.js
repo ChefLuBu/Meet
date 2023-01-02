@@ -12,19 +12,18 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
+    NumberOfEvents: 32,
     showWelcomeScreen: undefined,
   };
 
   updateEvents = (location, eventCount) => {
-    eventCount = eventCount || 32;
-    location = location || "all";
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
           ? events
           : events.filter((event) => event.location === location);
       this.setState({
-        events: locationEvents.slice(0, this.state.eventCount),
+        events: locationEvents.slice(0, this.state.NumberOfEvents),
       });
     });
   };
