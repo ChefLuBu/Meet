@@ -24,8 +24,7 @@ class App extends Component {
           ? events
           : events.filter((event) => event.location === location);
       this.setState({
-        showWelcomeScreen: undefined,
-        events: locationEvents.slice(0, eventCount),
+        events: locationEvents.slice(0, this.state.NumberOfEvents),
       });
     });
   };
