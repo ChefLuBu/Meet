@@ -30,7 +30,7 @@ class="btn-text"
 </div>
 </div>
 <a
-href="https://singular-ganache-fd70cd.netlify.app//privacy.html"
+href="https://singular-ganache-fd70cd.netlify.app/privacy.html"
 rel="nofollow noopener"
 >
 Privacy policy
