@@ -77,8 +77,7 @@ class App extends Component {
           updateEvents={this.updateEvents}
         />
         <NumberOfEvents 
-        num={this.state.events}
-        updateEvents={(num) => this.updateEvents(num)} />
+        updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
