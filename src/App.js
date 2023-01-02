@@ -6,7 +6,7 @@ import NumberOfEvents from "./NumberOfEvents";
 import "./styles/nprogress.css";
 import { InfoAlert } from "./Alert";
 import WelcomeScreen from "./WelcomeScreen";
-// import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
+import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 
 class App extends Component {
   state = {
@@ -16,37 +16,37 @@ class App extends Component {
     showWelcomeScreen: undefined,
   };
 
-  // updateEvents = (location, eventCount) => {
-  //   eventCount = eventCount || 32;
-  //   location = location || "all";
-  //   getEvents().then((events) => {
-  //     const locationEvents =
-  //       location === "all"
-  //         ? events
-  //         : events.filter((event) => event.location === location);
-  //     this.setState({
-  //       showWelcomeScreen: undefined,
-  //       events: locationEvents.slice(0, eventCount),
-  //     });
-  //   });
-  // };
+  updateEvents = (location, eventCount) => {
+    eventCount = eventCount || 32;
+    location = location || "all";
+    getEvents().then((events) => {
+      const locationEvents =
+        location === "all"
+          ? events
+          : events.filter((event) => event.location === location);
+      this.setState({
+        showWelcomeScreen: undefined,
+        events: locationEvents.slice(0, eventCount),
+      });
+    });
+  };
 
-  // async componentDidMount() {
-  //   this.mounted = true;
-  //   const accessToken = localStorage.getItem("access_token");
-  //   const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-  //   const searchParams = new URLSearchParams(window.location.search);
-  //   const code = searchParams.get("code");
-  //   this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-  //   if ((code || isTokenValid) && this.mounted) {
-  //     getEvents().then((events) => {
-  //       if (this.mounted) {
-  //         console.log(events)
-  //         this.setState({ events, locations: extractLocations(events) });
-  //       }
-  //     });
-  //   }
-  // }
+  async componentDidMount() {
+    this.mounted = true;
+    const accessToken = localStorage.getItem("access_token");
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          console.log(events)
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
+  }
 
   componentWillUnmount() {
     this.mounted = false;
@@ -76,7 +76,7 @@ class App extends Component {
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
-            // getAccessToken();
+            getAccessToken();
           }}
         />
       </div>
