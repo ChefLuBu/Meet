@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./styles/App.css";
-import EventList from "./EventList";
-import CitySearch from "./CitySearch";
-import NumberOfEvents from "./NumberOfEvents";
+// import EventList from "./EventList";
+// import CitySearch from "./CitySearch";
+// import NumberOfEvents from "./NumberOfEvents";
 import "./styles/nprogress.css";
-import { InfoAlert } from "./Alert";
-import WelcomeScreen from "./WelcomeScreen";
+// import { InfoAlert } from "./Alert";
+// import WelcomeScreen from "./WelcomeScreen";
 // import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 
 class App extends Component {
@@ -56,31 +56,31 @@ class App extends Component {
     if (this.state.eventCount === 32){
       return <h1>Hello World</h1>
     }
-    if (this.state.showWelcomeScreen === undefined){
-      return <div className="App" />;
-    }
-    return (
-      <div className="App">
-        {!navigator.onLine && (
-          <InfoAlert
-            className="alert-centered"
-            text="App is currently offline. You are seeing your cached data."
-          />
-        )}
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents updateEvents={this.updateEvents} />
-        <EventList events={this.state.events} />
-        <WelcomeScreen
-          showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => {
-            // getAccessToken();
-          }}
-        />
-      </div>
-    );
+//     if (this.state.showWelcomeScreen === undefined){
+//       return <div className="App" />;
+//     }
+//     return (
+//       <div className="App">
+//         {!navigator.onLine && (
+//           <InfoAlert
+//             className="alert-centered"
+//             text="App is currently offline. You are seeing your cached data."
+//           />
+//         )}
+//         <CitySearch
+//           locations={this.state.locations}
+//           updateEvents={this.updateEvents}
+//         />
+//         <NumberOfEvents updateEvents={this.updateEvents} />
+//         <EventList events={this.state.events} />
+//         <WelcomeScreen
+//           showWelcomeScreen={this.state.showWelcomeScreen}
+//           getAccessToken={() => {
+//             // getAccessToken();
+//           }}
+//         />
+//       </div>
+//     );
   }
 }
 
