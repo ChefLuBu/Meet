@@ -16,14 +16,14 @@ class App extends Component {
     showWelcomeScreen: undefined,
   };
 
-  updateEvents = (location, eventCount) => {
+  updateEvents = (location, events) => {
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
           ? events
           : events.filter((event) => event.location === location);
       this.setState({
-        events: locationEvents.slice(0, this.state.NumberOfEvents),
+        events: locationEvents.slice(0, this.state.events),
       });
     });
   };
