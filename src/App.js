@@ -53,10 +53,7 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.eventCount === 32){
-      return <h1>Hello World</h1>
-    }
-    if (this.state.showWelcomeScreen === undefined){
+      if (this.state.showWelcomeScreen === undefined){
       return <div className="App" />;
     }
     return (
