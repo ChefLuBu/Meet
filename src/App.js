@@ -12,6 +12,7 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
+    NumberOfEvents: 32,
     showWelcomeScreen: undefined,
   };
 
@@ -76,8 +77,7 @@ class App extends Component {
           locations={this.state.locations}
           updateEvents={this.updateEvents}
         />
-        <NumberOfEvents 
-        updateEvents={this.updateEvents} />
+        <NumberOfEvents updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
