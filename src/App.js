@@ -12,18 +12,17 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    NumberOfEvents: 32,
     showWelcomeScreen: undefined,
   };
 
-  updateEvents = (location, NumberOfEvents) => {
+  updateEvents = (location, events) => {
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
           ? events
           : events.filter((event) => event.location === location);
       this.setState({
-        events: locationEvents.slice(0, this.state.NumberofEvents),
+        events: locationEvents.slice(0, this.state.events),
       });
     });
   };
@@ -38,8 +37,21 @@ class App extends Component {
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({ events, locations: extractLocations(events) });
+          this.setState({
+            events: events.slice(0, this.state.events),
+            locations: extractLocations(events),
+          });
         }
+      });
+  } else {
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({
+          showWelcomeScreen: false,
+          events: events.slice(0, this.state.events),
+          locations: extractLocations(events),
+        });
+      }
       });
     }
   }
