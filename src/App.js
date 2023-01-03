@@ -93,7 +93,7 @@ class App extends Component {
           <h4>Events in each city</h4>
 
           <ScatterChart
-            width={400}
+            width={800}
             height={400}
             margin={{
               top: 20,
