@@ -83,12 +83,7 @@ class App extends Component {
             text="App is currently offline. You are seeing your cached data."
           />
         )}
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents updateEvents={this.updateEvents} />
-        <div className="App">
+         <div className="App">
           
           <CitySearch updateEvents={this.updateEvents} locations={locations} />
           <NumberOfEvents
@@ -114,6 +109,7 @@ class App extends Component {
           </ScatterChart>
           <EventList events={this.state.events} />
         </div>
+
         <EventList events={this.state.events} />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
