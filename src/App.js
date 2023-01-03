@@ -6,10 +6,17 @@ import NumberOfEvents from "./NumberOfEvents";
 import "./styles/nprogress.css";
 import { InfoAlert } from "./Alert";
 import WelcomeScreen from "./WelcomeScreen";
+import EventGenre from "./EventGenre";
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 import {
-  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
-} from 'recharts';
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 class App extends Component {
   state = {
@@ -64,29 +71,29 @@ class App extends Component {
   }
 
   render() {
-    const { locations, numberOfEvents } = this.state;
+    const { locations, numberOfEvents, events } = this.state;
     if (this.state.showWelcomeScreen === undefined) {
       return <div className="App" />;
     }
     return (
       <div className="App">
-        <h1>Meet App</h1>
-        <h4>Choose your nearest city</h4>
         {!navigator.onLine && (
           <InfoAlert
             className="alert-centered"
             text="App is currently offline. You are seeing your cached data."
           />
         )}
-         <div className="App">
-          
-          <CitySearch updateEvents={this.updateEvents} locations={locations} />
-          <NumberOfEvents
-            updateEvents={this.updateEvents}
-            numberOfEvents={numberOfEvents}
-          />
-          <h4>Events in each city</h4>
-          <ResponsiveContainer height={400} >
+        <h1>Meet App</h1>
+        <h4>Choose your nearest city</h4>
+        <CitySearch updateEvents={this.updateEvents} locations={locations} />
+        <NumberOfEvents
+          updateEvents={this.updateEvents}
+          numberOfEvents={numberOfEvents}
+        />
+        <h4>Events in each city</h4>
+        <div className="data-vis-wrapper">
+          <EventGenre events={events} />
+        <ResponsiveContainer height={400}>
           <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
             <CartesianGrid />
             <XAxis type="category" dataKey="city" name="city" />
@@ -100,8 +107,8 @@ class App extends Component {
             <Scatter data={this.getData()} fill="#8884d8" />
           </ScatterChart>
         </ResponsiveContainer>
-        <EventList events={this.state.events} />
         </div>
+        <EventList events={events} />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
