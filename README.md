@@ -3,6 +3,7 @@ This is the client-side view of an "Events-by-city" application, allowing users 
 
 ## Screenshots
 ![A screenshot of the main landing page](./public/graph.png)
+![A screenshot of location data](./public/locations.png)
 
 ## Key Features
 The initial landing page is a Welcome screen that allows new-user registration and login functions
