@@ -1,3 +1,28 @@
+##Meet App
+This is the client-side view of an "Events-by-city" application, allowing users to create an account and search to access information about local events by city, including addres, date & time & the ability to add them to a google calendar all within the application.
+
+##Key Features
+The initial landing page is a Welcome screen that allows new-user registration and login functions
+
+Upon login authentication, the user is moved to the main page, which will auto-populate with 32 events. If the user searches for an event or changes the number of events displayed, the app will automatically update to accomodate the search queries. 
+
+Events contain the following information, obtianed from the Google Calender API and with data provided by Career Foundry. In the event that an internet connection is not available, the app populates from existing mock data, or the information obtained on last login.
+
+Technologies Used
+react
+axios
+nprogress
+parcel
+
+##Links
+Live App: https://singular-ganache-fd70cd.netlify.app/
+
+##Notes
+N/A
+
+
+
+##USER STORIES
 ***FEATURE 1: FILTER EVENTS BY CITY***
 
 **Scenario 1:** When user hasn’t searched for a city, show upcoming events from all cities.
